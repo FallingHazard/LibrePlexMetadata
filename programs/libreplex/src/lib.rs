@@ -13,9 +13,9 @@ pub mod constants;
 pub use constants::*;
 pub use state::*;
 
+
 #[program]
 pub mod libreplex {
-
     use super::*;
 
     pub fn create_collection(
@@ -57,6 +57,15 @@ pub mod libreplex {
             ctx,
             metadata_input
         )
+    }
+
+    pub fn edit_deny_list(ctx: Context<EditDenyList>, 
+        denylist_input: DenyListInput) -> Result<()> {
+        instructions::edit_deny_list::handler(ctx, denylist_input)
+    }
+
+    pub fn create_deny_list(ctx: Context<CreateDenyList>, denylist_input: DenyListInput) -> Result<()> {
+        instructions::create_deny_list::handler(ctx, denylist_input)
     }
 
     pub fn delete_metadata(

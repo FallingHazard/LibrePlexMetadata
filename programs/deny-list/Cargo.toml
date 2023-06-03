@@ -1,0 +1,27 @@
+[package]
+name = "deny-list"
+version = "0.1.0"
+description = "LibrePlex deny list program"
+edition = "2021"
+
+[features]
+no-entrypoint = []
+test-sbf = []
+
+[dependencies]
+libreplex = {version = "0.1.0", path = "../libreplex", features = ["no-entrypoint"]}
+num-traits = "0.2.15"
+num-derive = "0.3.3"
+arrayref = "0.3.7"
+anchor-lang = {version = "^0.27", features = ["init-if-needed"]}
+solana-program = "1.14.12"
+thiserror = "1.0.40"
+spl-type-length-value = { git = "https://github.com/solana-labs/solana-program-library.git", rev = "d48985474cd8ff5e049c5ffb4bb2fa7442500107", subpath = "libraries/type-length-value"}
+spl-tlv-account-resolution = { git = "https://github.com/solana-labs/solana-program-library.git", rev = "d48985474cd8ff5e049c5ffb4bb2fa7442500107", subpath = "libraries/tlv-account-resolution"}
+spl-transfer-hook-interface = { git = "https://github.com/solana-labs/solana-program-library.git", rev = "d48985474cd8ff5e049c5ffb4bb2fa7442500107", subpath = "token/transfer-hook-interface"}
+[dev-dependencies]
+spl-token-2022 = { git = "https://github.com/solana-labs/solana-program-library.git", rev = "d48985474cd8ff5e049c5ffb4bb2fa7442500107", subpath = "token/program-2022", features = ["no-entrypoint"]}
+
+
+[lib]
+crate-type = ["cdylib", "lib"]

@@ -4,6 +4,7 @@ import { Libreplex } from "../../../../target/types/libreplex";
 import { Keypair, LAMPORTS_PER_SOL, PublicKey, SystemProgram } from "@solana/web3.js";
 import { expect } from 'chai';
 import exp from "constants";
+import {transfer, TOKEN_2022_PROGRAM_ID, createMint, TOKEN_PROGRAM_ID} from "@solana/spl-token"
 
 describe("libreplex", () => {
   anchor.setProvider(anchor.AnchorProvider.env());
@@ -36,7 +37,19 @@ describe("libreplex", () => {
     const collectionName = "COOL COLLECTION"
 
     const tx = await program.methods.createCollection({
-      collectionUrl: "COOL.com",
+      collectionRenderMode: {
+        url: {
+          collectionUrl: "COOL.COM",
+        }
+      },
+      metadataRenderMode: {
+          url: {
+            baseUrlConfiguration: {
+              prefix: "",
+              suffix: "",
+            }
+          }
+      },
       name: collectionName,
       symbol: "COOL",
       nftCollectionData: null,
@@ -73,7 +86,11 @@ describe("libreplex", () => {
     const metadataName = "COOLMETA"
 
     await program.methods.createMetadata({
-      metadataUrl: "COOLURL.com",
+      renderModeData: {
+        url: {
+          url: "",
+        }
+      },
       name: metadataName,
       nftMetadata: null,
     }).accounts({

@@ -6,6 +6,8 @@ pub mod edit_collection_permissions;
 pub mod delete_collection_permissions;
 pub mod edit_metadata;
 pub mod edit_metadata_permissions;
+pub mod edit_deny_list;
+pub mod create_deny_list;
 
 pub use create_collection::*;
 pub use create_metadata::*;
@@ -15,3 +17,5 @@ pub use delete_metadata::*;
 pub use edit_collection_permissions::*;
 pub use edit_metadata::*;
 pub use edit_metadata_permissions::*;
+pub use edit_deny_list::*;
+pub use create_deny_list::*;

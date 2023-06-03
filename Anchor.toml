@@ -4,6 +4,8 @@ skip-lint = false
 
 [programs.localnet]
 libreplex="AJ5Hh5q4HegZWWu1ScY7ZRA6zELXmRzEWS5EXFSKqBC6"
+evil_marketplace_test="5tQSvNCjigRCP8tMwvpYtURrecwBdWcyCWuANC7d3Ppw"
+
 
 [registry]
 url = "https://api.apr.dev"
@@ -18,5 +20,17 @@ startup_wait = 100000
 [test.validator]
 url = "https://api.devnet.solana.com"
 
+[[test.validator.clone]]
+address = "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+url = "https://api.mainnet-beta.solana.com"
+
+[[test.genesis]]
+address = "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+program = "./spl_token_2022.so"
+
+[[test.genesis]]
+address = "HbhCGHxUmHFn8wA5PQCFya8nom4Zeacpit5SxottTmA"
+program = "target/deploy/deny_list.so"
+
 [scripts]
-test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 programs/**/**/tests/**/*.ts"
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 programs/libreplex/tests/js/royalty-enforcement-test.ts"
